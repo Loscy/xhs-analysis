@@ -284,7 +284,7 @@ function ConsoleShell({
               navigate(`/${item.key}`);
             }}
             items={[
-              isMockApi ? { key: "github", icon: <GithubOutlined />, label: "GitHub 仓库" } : null,
+              { key: "github", icon: <GithubOutlined />, label: "GitHub 仓库" },
               {
                 key: "grp-products",
                 icon: <ShoppingOutlined />,
