@@ -39,7 +39,7 @@ import * as echarts from "echarts";
 import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import "antd/dist/reset.css";
-import { AndroidDevice, AndroidDeviceStatus, ApiKeyRecord, MarketplaceItem, MarketplaceStatus, MetricHistory, MetricSummary, ProductRecord, QueryRecord, api } from "./lib/api";
+import { AndroidDevice, AndroidDeviceStatus, ApiKeyRecord, MarketplaceItem, MarketplaceStatus, MetricHistory, MetricSummary, ProductRecord, QueryRecord, api, isMockApi } from "./lib/api";
 import "./styles/app.css";
 
 const { Header, Sider, Content } = Layout;
@@ -83,7 +83,7 @@ const TAG_DIMENSIONS = [
 ];
 
 function getStoredApiKey() {
-  return localStorage.getItem(API_KEY_STORAGE_KEY) || "";
+  return localStorage.getItem(API_KEY_STORAGE_KEY) || (isMockApi ? "demo-key" : "");
 }
 
 function App() {
@@ -104,7 +104,7 @@ function App() {
       }}
     >
       <AntApp>
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
           <RootRoutes />
         </BrowserRouter>
       </AntApp>

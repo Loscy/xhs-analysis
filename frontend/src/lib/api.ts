@@ -1,3 +1,5 @@
+import { mockApi } from "./mockApi";
+
 export type ApiKeyRecord = {
   id: number;
   name: string;
@@ -132,6 +134,7 @@ export type TagResult = {
 };
 
 const API_BASE = import.meta.env.VITE_API_BASE || "";
+export const isMockApi = import.meta.env.VITE_MOCK_API === "true";
 
 function headers(apiKey?: string): HeadersInit {
   return apiKey ? { "Content-Type": "application/json", "X-API-Key": apiKey } : { "Content-Type": "application/json" };
@@ -154,7 +157,7 @@ export type PageResult<T> = {
   total: number;
 };
 
-export const api = {
+const realApi = {
   getTags: (input: string, apiKey: string, deviceId?: number | null) => {
     const params = new URLSearchParams({ input });
     if (deviceId) params.set("deviceId", String(deviceId));
@@ -207,3 +210,5 @@ export const api = {
   marketplaceStatus: (apiKey: string) =>
     request<MarketplaceStatus>("/api/marketplace/status", {}, apiKey),
 };
+
+export const api = isMockApi ? mockApi : realApi;
