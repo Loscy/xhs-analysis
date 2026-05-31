@@ -30,29 +30,6 @@ body {
   font-size: 22px;
 }
 
-.demoGithubLink {
-  position: fixed;
-  top: 16px;
-  right: 18px;
-  z-index: 1000;
-  height: 36px;
-  padding: 0 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  border: 1px solid rgba(15, 23, 42, 0.14);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #0f172a;
-  font-weight: 600;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
-  backdrop-filter: blur(8px);
-}
-
-.demoGithubLink:hover {
-  color: #1677ff;
-}
-
 .gate {
   min-height: 100vh;
   padding: 28px;
@@ -172,15 +149,6 @@ body {
 }
 
 @media (max-width: 720px) {
-  .demoGithubLink {
-    top: 12px;
-    right: 12px;
-  }
-
-  .demoGithubLink span {
-    display: none;
-  }
-
   .gate {
     grid-template-columns: 1fr;
     padding: 16px;

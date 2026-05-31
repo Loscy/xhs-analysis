@@ -106,21 +106,11 @@ function App() {
       }}
     >
       <AntApp>
-        {isMockApi && <DemoGithubLink />}
         <BrowserRouter basename={import.meta.env.BASE_URL}>
           <RootRoutes />
         </BrowserRouter>
       </AntApp>
     </ConfigProvider>
-  );
-}
-
-function DemoGithubLink() {
-  return (
-    <a className="demoGithubLink" href={GITHUB_URL} target="_blank" rel="noreferrer">
-      <GithubOutlined />
-      <span>GitHub</span>
-    </a>
   );
 }
 
@@ -286,8 +276,15 @@ function ConsoleShell({
             mode="inline"
             defaultOpenKeys={["grp-products"]}
             selectedKeys={[tab]}
-            onClick={(item) => navigate(`/${item.key}`)}
+            onClick={(item) => {
+              if (item.key === "github") {
+                window.open(GITHUB_URL, "_blank", "noopener,noreferrer");
+                return;
+              }
+              navigate(`/${item.key}`);
+            }}
             items={[
+              isMockApi ? { key: "github", icon: <GithubOutlined />, label: "GitHub 仓库" } : null,
               {
                 key: "grp-products",
                 icon: <ShoppingOutlined />,
