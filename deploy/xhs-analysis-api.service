@@ -1,0 +1,15 @@
+[Unit]
+Description=XHS Analysis FastAPI
+After=network-online.target mysql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/xhs-analysis/backend
+EnvironmentFile=/opt/xhs-analysis/backend/.env
+ExecStart=/opt/xhs-analysis/backend/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

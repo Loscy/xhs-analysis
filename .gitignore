@@ -1,0 +1,15 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+dist/
+.vite/
+*.log
+*.tsbuildinfo
+.deploy-bundle/
+xhs-analysis-cloud.tar.gz
+backend/.env
+backend/.admin-key
+frontend/.env
