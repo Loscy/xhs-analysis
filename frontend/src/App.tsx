@@ -26,6 +26,7 @@ import {
 } from "antd";
 import {
   ApiOutlined,
+  GithubOutlined,
   KeyOutlined,
   LoginOutlined,
   LogoutOutlined,
@@ -46,6 +47,7 @@ const { Header, Sider, Content } = Layout;
 const { Text, Title, Paragraph } = Typography;
 const { TextArea } = Input;
 const API_KEY_STORAGE_KEY = "xhs_api_key";
+const GITHUB_URL = "https://github.com/Loscy/xhs-analysis";
 
 type DeviceFormValue = {
   name: string;
@@ -104,11 +106,21 @@ function App() {
       }}
     >
       <AntApp>
+        {isMockApi && <DemoGithubLink />}
         <BrowserRouter basename={import.meta.env.BASE_URL}>
           <RootRoutes />
         </BrowserRouter>
       </AntApp>
     </ConfigProvider>
+  );
+}
+
+function DemoGithubLink() {
+  return (
+    <a className="demoGithubLink" href={GITHUB_URL} target="_blank" rel="noreferrer">
+      <GithubOutlined />
+      <span>GitHub</span>
+    </a>
   );
 }
 
